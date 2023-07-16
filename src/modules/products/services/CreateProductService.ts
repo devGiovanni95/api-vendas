@@ -32,3 +32,5 @@ class CreateProductService {
     return product;
   }
 }
+
+export default CreateProductService;
