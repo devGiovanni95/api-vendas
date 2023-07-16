@@ -63,5 +63,4 @@ export default class ProductsController {
 
     return response.json([]);
   }
-  //public async show(request: Request, response: Response);
 }
