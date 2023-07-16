@@ -1,7 +1,7 @@
 import { UpdateDateColumn, getCustomRepository } from 'typeorm';
-import { ProductRepository } from '../repositories/ProductRepository';
+import { ProductRepository } from '../typeorm/repositories/ProductRepository';
 import AppError from '@shared/errors/AppError';
-import { Product } from '../entities/Product';
+import { Product } from '../typeorm/entities/Product';
 
 interface IRequest {
   id: string;
