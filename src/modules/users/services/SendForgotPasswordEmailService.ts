@@ -3,7 +3,7 @@ import AppError from '@shared/errors/AppError';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
 import { hash } from 'bcryptjs';
 import UserTokensRepository from '../typeorm/repositories/UserTokensRepository';
-
+import EtherealMail from '@config/mail/EtherealMail';
 interface IRequest {
   email: string;
 }
@@ -24,6 +24,11 @@ class SendForgotPasswordEmailService {
       '🚀 ~ file: SendForgotPasswordEmailService.ts:23 ~ SendForgotPasswordEmailService ~ execute ~ token:',
       token,
     );
+
+    await EtherealMail.sendMail({
+      to: email,
+      body: `Solicitação de redefinição de senha recebida: ${token?.token}`,
+    });
   }
 }
 
