@@ -20,7 +20,7 @@ class CreateOrderService {
     const ordesRepository = getCustomRepository(OrdersRepository);
     const customersRepository = getCustomRepository(CustomersRepository);
     const productsRepository = getCustomRepository(ProductRepository);
-      
+
 
     const customerExists = await customersRepository.findById(customer_id);
 
