@@ -33,6 +33,16 @@ class CreateOrderService {
     if(!existsProduct.length){
         throw new AppError('Could not find any products with the given ids.')
     }
+    
+    const existsProductsIds = existsProduct.map((product) => product.id);
+    
+    const checkInexistentProducts = products.filter(
+      product => !existsProductsIds.includes(product.id),
+      )
+      
+      if(checkInexistentProducts.length){
+          throw new AppError(`Could not find product ${checkInexistentProducts[0].id}.`)
+      }
 
   }
 }
