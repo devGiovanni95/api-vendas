@@ -25,6 +25,12 @@ import { Product } from '@modules/products/typeorm/entities/Product';
   
     @Column('decimal')
     price: number;
+  
+    @Column()
+    order_id: string;
+  
+    @Column()
+    product_id: string;
 
     @Column('int')
     quantity: number;

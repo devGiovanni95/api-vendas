@@ -5,7 +5,7 @@ import Customer from "@modules/customers/typeorm/entities/Customer";
 interface IProduct{
     product_id: string;
     price: number;
-    quatity: number;
+    quantity: number;
 }
 
 interface IRequest{
