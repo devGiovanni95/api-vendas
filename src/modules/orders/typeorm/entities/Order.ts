@@ -1,4 +1,4 @@
-import Customer from '@modules/customers/typeorm/entities/Customer';
+
 import {
     CreateDateColumn,
     Entity,
@@ -6,17 +6,20 @@ import {
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
+    UpdateDateColumn,
   } from 'typeorm';
-import { OrdersProducts } from './OrdersProducts';
+
+import Customer from '@modules/customers/typeorm/entities/Customer';
+import OrdersProducts from './OrdersProducts';
   
-  @Entity('order')
-  export class Order {
+  @Entity('orders')
+  class Order {
     @PrimaryGeneratedColumn('uuid')
     id: string;
   
     @ManyToOne(() => Customer)
     @JoinColumn({name:'customer_id'})
-    customer: Customer
+    customer: Customer;
 
     @OneToMany(() => OrdersProducts, order_products => order_products.order, {
         cascade: true,
@@ -26,7 +29,8 @@ import { OrdersProducts } from './OrdersProducts';
     @CreateDateColumn()
     created_at: Date;
   
-    @CreateDateColumn()
+    @UpdateDateColumn()
     updated_at: Date;
   }
   
+  export default Order;

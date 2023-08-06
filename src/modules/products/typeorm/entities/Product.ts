@@ -1,15 +1,15 @@
-import { OrdersProducts } from '@modules/orders/typeorm/entities/OrdersProducts';
+import  OrdersProducts  from '@modules/orders/typeorm/entities/OrdersProducts';
 import {
   Column,
   CreateDateColumn,
   Entity,
   OneToMany,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('products')
-export class Product {
+class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -28,6 +28,8 @@ export class Product {
   @CreateDateColumn()
   created_at: Date;
 
-  @CreateDateColumn()
+  @UpdateDateColumn()
   updated_at: Date;
 }
+
+export default Product;

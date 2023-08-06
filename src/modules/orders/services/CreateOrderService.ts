@@ -1,7 +1,7 @@
 import { getCustomRepository } from 'typeorm';
 import AppError from '@shared/errors/AppError';
-import { Order } from '../typeorm/entities/Order';
-import { OrdersRepository } from '../typeorm/repositories/OrdersRepository';
+import Order  from '../typeorm/entities/Order';
+import OrdersRepository  from '../typeorm/repositories/OrdersRepository';
 import CustomersRepository from '@modules/customers/typeorm/repositories/CustomersRepository';
 import { ProductRepository } from '@modules/products/typeorm/repositories/ProductRepository';
 
@@ -36,7 +36,7 @@ class CreateOrderService {
     }
     
     //verifica se todos os produtos existem no banco de dados
-    const existsProductsIds = existsProduct.map((product) => product.id);
+    const existsProductsIds = existsProduct.map(product => product.id);
     
     const checkInexistentProducts = products.filter(
       product => !existsProductsIds.includes(product.id),
@@ -77,7 +77,7 @@ class CreateOrderService {
       id: product.product_id,
       quantity:
         existsProduct.filter(
-          p => p.id === product.id)[0].quantity - product.quantity,
+          p => p.id === product.product_id)[0].quantity - product.quantity,
     }));
 
     await productsRepository.save(updateProductQuantity);

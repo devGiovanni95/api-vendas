@@ -27,13 +27,15 @@ app.use(
         message: error.message,
       });
     }
-
+    
+   console.log(error);
+    
     return response.status(500).json({
       status: 'error',
       message: 'Internal server error',
     });
   },
-);
+  );
 
 app.listen(3333, () => {
   console.log('Server is running in port 3333! 🏆');

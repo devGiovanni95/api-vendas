@@ -6,12 +6,13 @@ import {
     JoinColumn,
     ManyToOne,
     PrimaryGeneratedColumn,
+    UpdateDateColumn,
   } from 'typeorm';
-import { Order } from './Order';
-import { Product } from '@modules/products/typeorm/entities/Product';
+import  Order  from './Order';
+import  Product  from '@modules/products/typeorm/entities/Product';
   
   @Entity('orders_products')
-  export class OrdersProducts {
+  class OrdersProducts {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
@@ -38,7 +39,8 @@ import { Product } from '@modules/products/typeorm/entities/Product';
     @CreateDateColumn()
     created_at: Date;
   
-    @CreateDateColumn()
+    @UpdateDateColumn()
     updated_at: Date;
   }
+  export default OrdersProducts;
   
