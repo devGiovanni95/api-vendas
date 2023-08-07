@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import ResetPasswordService from '../services/ResetPasswordService';
+import { instanceToInstance } from 'class-transformer';
 
 export default class ResetPasswordController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -11,6 +12,6 @@ export default class ResetPasswordController {
       password,
       token,
     });
-    return response.status(204).json(user);
+    return response.status(204).json(instanceToInstance(user));
   }
 }
