@@ -2,6 +2,7 @@ import { UpdateDateColumn, getCustomRepository } from 'typeorm';
 import { ProductRepository } from '../typeorm/repositories/ProductRepository';
 import AppError from '@shared/errors/AppError';
 import  Product  from '../typeorm/entities/Product';
+import RedisCache from '@shared/cache/RedisCache';
 
 interface IRequest {
   id: string;
@@ -31,6 +32,11 @@ class UpdateProductService {
     if (productExists && name !== product.name) {
       throw new AppError('There is alread one product eith this name');
     }
+
+    
+    const redisCache = new RedisCache();
+    
+    await redisCache.invalidate('api-vendas-PRODUCT_LIST');
 
     product.name = name;
     product.price = price;
